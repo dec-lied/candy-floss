@@ -94,6 +94,12 @@ M.groups =
 
     FloatBorder =   { fg = colors.black, bg = colors.black },
     VertSplit =     { fg = colors.dark_grey, bg = colors.black },
+
+    IndentBlanklineChar =   { fg = colors.grey, nocombine = true },
+    IndentBlanklineSpaceChar = { fg = colors.grey, nocombine = true },
+    IndentBlanklineContextChar = { fg = colors.blue, nocombine = true },
+    IndentBlanklineContextStart = { fg = colors.grey, nocombine = true },
+    IndentBlanklineSpaceCharBlankline = { fg = colors.grey, nocombine = true }
 }
 
 M.link_groups =
@@ -136,7 +142,6 @@ end
 if (vim.g.colors_name ~= "candy-floss")
 then
     M.setup()
-    print("setting up")
 end
 
 return M
