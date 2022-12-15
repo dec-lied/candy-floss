@@ -1,5 +1,3 @@
-M = {}
-
 local colors =
 {
     red = "#ff5050",
@@ -15,9 +13,10 @@ local colors =
     orange = "#fac898",
     light_pink = "pink",
     light_grey = "#606060",
-    middle_grey = "#262626"
+    dark_grey = "#262626"
 }
 
+M = {}
 
 M.preferred =
 {
@@ -38,7 +37,10 @@ M.minor =
 {
     String = { fg = colors.purple },
     Character = { fg = colors.purple },
-    Function = { fg = colors.pink }
+    Function = { fg = colors.pink },
+    Struct = { fg = colors.pink },
+    Method = { fg = colors.pink },
+    MatchParen = { bg = colors.grey, underline = true, cterm = { underline = true } }
 }
 
 M.groups =
@@ -53,13 +55,13 @@ M.groups =
     DiffChange =    { bg = colors.orange },
     DiffDelete =    { bg = colors.pink },
     DiffText =      { bg = colors.blue },
-    EndOfBuffer =   { fg = colors.dark_grey, bg = colors.black},
+    EndOfBuffer =   { fg = colors.light_grey, bg = colors.black},
     TermCursor =    { fg = colors.black, bg = colors.white },
     TermCursorNC =  { fg = colors.black, bg = colors.white },
     ErrorMsg =      { fg = colors.light_pink },
     Folded =        { fg = colors.grey, bg = colors.black },
-    FoldColumn =    { fg = colors.middle_grey, bg = colors.black },
-    SignColumn =    { fg = colors.middle_grey, bg = colors.black },
+    FoldColumn =    { fg = colors.dark_grey, bg = colors.black },
+    SignColumn =    { fg = colors.dark_grey, bg = colors.black },
     IncSearch =     { fg = "#ffffff", bg = colors.pink },
     Substitute =    { fg = colors.white },
     LineNr =        { fg = colors.grey, bg = colors.black },
@@ -90,7 +92,7 @@ M.groups =
     WinBar =        { bold = true, cterm = { bold = true, } },
 
     FloatBorder =   { fg = colors.black, bg = colors.black },
-    VertSplit =     { fg = colors.middle_grey, bg = colors.black },
+    VertSplit =     { fg = colors.dark_grey, bg = colors.black },
 }
 
 M.link_groups =
@@ -128,6 +130,13 @@ function M.setup()
             vim.api.nvim_set_hl(0, group, settings)
         end
     end
+end
+
+if (vim.cmd("colorscheme") == nil)
+then
+    print("no colorscheme")
+else
+    print("yes colorscheme")
 end
 
 M.setup()
