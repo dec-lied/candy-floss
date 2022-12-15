@@ -1,3 +1,5 @@
+M = {}
+
 local colors =
 {
     blue = "#78a9ff",
@@ -15,7 +17,7 @@ local colors =
 }
 
 
-local preferred =
+M.preferred =
 {
     Comment = { fg = colors.light_grey },
     Constant = { fg = colors.cyan },
@@ -30,14 +32,14 @@ local preferred =
     Todo = { fg = colors.green }
 }
 
-local minor =
+M.minor =
 {
     String = { fg = colors.purple },
     Character = { fg = colors.purple },
     Function = { fg = colors.pink }
 }
 
-local groups =
+M.groups =
 {
     SpecialKey =    { fg = colors.dark_grey },
     EndOfBuffer =   { fg = colors.white, bg = colors.black},
@@ -48,7 +50,6 @@ local groups =
     ErrorMsg =      { fg = colors.light_pink },
     IncSearch =     { fg = "#ffffff", bg = colors.pink },
     Search =        { fg = "#ffffff", bg = colors.pink },
-    CurSearch =     { cleared = true },
     MoreMsg =       { fg = colors.orange },
     ModeMsg =       { fg = colors.white },
     LineNr =        { fg = colors.grey, bg = colors.black },
@@ -81,7 +82,6 @@ local groups =
     QuickFixLine  = { bg = colors.black },
     NormalNC =      { fg = colors.white, bg = colors.black },
     NormalFloat =   { fg = colors.white, bg = colors.black },
-    MsgArea =       { cleared = true },
     FloatBorder =   { fg = colors.black, bg = colors.black },
     WinBar =        { bold = true, cterm = { bold = true, } },
     Cursor =        { fg = colors.black, bg = colors.white },
@@ -90,23 +90,23 @@ local groups =
     Error =         { fg = colors.white, bg = colors.cyan },
 }
 
-local link_groups =
+M.link_groups =
 {
-    WhiteSpace =    { link = groups.NonText },
-    MsgSeparator =  { link = groups.StatusLine },
+    WhiteSpace =    { link = "NonText" },
+    MsgSeparator =  { link = "StatusLine" },
 }
 
-local treesitter =
+M.treesitter =
 {
-    TSFloat = preferred.Type
+    TSFloat = M.preferred.Type
 }
 
-local lsp =
+M.lsp =
 {
     LspDiagnosticsDefaultError = { fg = "red" }
 }
 
-local function setup()
+function M.setup()
     if vim.fn.exists("syntax_on")
     then
         vim.api.nvim_command("syntax reset")
@@ -116,7 +116,7 @@ local function setup()
     vim.o.termguicolors = true
     vim.g.colors_name = "candy-floss"
 
-    local categories = { preferred, minor, groups, link_groups, treesitter, lsp }
+    local categories = { M.preferred, M.minor, M.groups, M.link_groups, M.treesitter, M.lsp }
 
     for _, category in ipairs(categories)
     do
@@ -125,8 +125,7 @@ local function setup()
             vim.api.nvim_set_hl(0, group, settings)
         end
     end
-
-    print(categories)
 end
 
-return { setup = setup }
+return M
+
