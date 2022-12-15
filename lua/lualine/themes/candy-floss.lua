@@ -11,7 +11,7 @@ local colors =
 
 local candy_floss = {}
 
-candy_floss.lualine_theme =
+candy_floss =
 {
     normal =
     {

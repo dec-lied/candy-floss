@@ -80,7 +80,8 @@ M.groups =
     QuickFixLine  = { bg = colors.black },
     Search =        { fg = "#ffffff", bg = colors.pink },
     SpecialKey =    { fg = colors.dark_grey },
-    StatusLine =    { cterm = { bold = true, reverse = true}, bold = true, reverse = true },
+    StatusLine =    { fg = colors.black, bg = colors.black, cterm = { bold = true, reverse = true}, bold = true, reverse = true },
+    StatusLineNC =  { fg = colors.black, bg = colors.black, cterm = { reverse = true}, reverse = true },
     TabLine =       { fg = colors.white, bg = colors.dark_grey },
     TabLineFill =   { fg = colors.white, bg = colors.dark_grey },
     TabLineSel =    { fg = colors.cyan, bg = colors.grey },
@@ -132,14 +133,10 @@ function M.setup()
     end
 end
 
-if (vim.cmd("colorscheme") == nil)
+if (vim.g.colors_name ~= "candy-floss")
 then
-    print("no colorscheme")
-else
-    print("yes colorscheme")
+    M.setup()
+    print("setting up")
 end
 
-M.setup()
-
 return M
-
