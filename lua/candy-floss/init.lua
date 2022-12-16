@@ -134,7 +134,8 @@ M.link_groups =
 M.treesitter =
 {
     ['@text'] = { fg = colors.white },
-    ['@text.math'] = { fg = colors.purple }
+    ['@text.math'] = { fg = colors.purple },
+    ['@parameter'] = { fg = colors.white }
 }
 
 M.lsp =
