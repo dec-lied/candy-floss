@@ -3,7 +3,6 @@ local colors =
     red = "#ff5050",
     blue = "#78a9ff",
     cyan = "#82cfff",
-    other_blue = "#3ddbd9",
     pink = "#ff7eb6",
     grey = "#393939",
     green = "#77dd77",
@@ -12,6 +11,7 @@ local colors =
     purple = "#be97ff",
     orange = "#fac898",
     light_pink = "pink",
+    other_blue = "#3ddbd9",
     light_grey = "#606060",
     dark_grey = "#262626"
 }
@@ -23,7 +23,7 @@ M.preferred =
     Comment = { fg = colors.light_grey },
     Constant = { fg = colors.cyan },
     Identifier = { fg = colors.blue },
-    Statement = { fg = colors.blue },
+    Statement = { fg = colors.purple },
     PreProc = { fg = colors.pink },
     Type = { fg = colors.orange },
     Special = { fg = colors.light_pink },
@@ -51,10 +51,10 @@ M.groups =
     CursorColumn =  { bg = colors.black },
     CursorLine =    { bg = colors.black },
     Directory =     { fg = colors.cyan },
-    DiffAdd =       { bg = colors.green },
-    DiffChange =    { bg = colors.orange },
-    DiffDelete =    { bg = colors.pink },
-    DiffText =      { bg = colors.blue },
+    DiffAdd =       { fg = colors.green },
+    DiffChange =    { fg = colors.orange },
+    DiffDelete =    { fg = colors.pink },
+    DiffText =      { fg = colors.blue },
     EndOfBuffer =   { fg = colors.light_grey, bg = colors.black},
     TermCursor =    { fg = colors.black, bg = colors.white },
     TermCursorNC =  { fg = colors.black, bg = colors.white },
@@ -65,7 +65,7 @@ M.groups =
     IncSearch =     { fg = "#ffffff", bg = colors.pink },
     Substitute =    { fg = colors.white },
     LineNr =        { fg = colors.grey, bg = colors.black },
-    CursorLineNR =  { fg = colors.white },
+    CursorLineNr =  { fg = colors.white },
     ModeMsg =       { fg = colors.white },
     MoreMsg =       { fg = colors.orange },
     NonText =       { fg = colors.grey },
@@ -106,16 +106,68 @@ M.link_groups =
 {
     WhiteSpace =    { link = "NonText" },
     MsgSeparator =  { link = "StatusLine" },
+
+    NvimTreeFileNew = { link = "NvimTreeGitNew" },
+    NvimTreeFileRenamed = { link = "NvimTreeGitRenamed" },
+    NvimTreeFileMerge = { link = "NvimTreeGitMerge" },
+    NvimTreeLineNr = { link = "LineNr" },
+    NvimTreeFileDeleted = { link = "NvimTreeGitDeleted" },
+    NvimTreeFileIgnored = { link = "NvimTreeGitIgnore" },
+    NvimTreeGitIgnores = { link = "Comment" },
+    NvimTreeNormalNC = { link = "NvimTreeNormal" },
+    NvimTreeStatusLineNC = { link = "StatusLineNC" },
+    NvimTreeStatusLine = { link = "StatusLine" },
+    NvimTreeSignColumn = { link = "NvimTreeNormal" },
+    NvimTreePopup = { link = "Normal" },
+    NvimTreeVertSplit = { link = "VertSplit" },
+    NvimTreeFileStaged = { link = "NvimTreeGitStaged" },
+    NvimTreeOpenedFolderIcon = { link = "NvimTreeFolderIcon" },
+    NvimTreeCursorColumn = { link = "CursorColumn" },
+    NvimTreeClosedFolderIcon = { link = "NvimTreeFolderIcon" },
+    NvimTreeCursorLine = { link = "CursorLine" },
+    NvimTreeEndOfBuffer = { link = "EndOfBuffer" },
+    NvimTreeCursorLineNr = { link = "CursorLineNr" },
+    NvimTreeFileDirty = { link = "NvimTreeGitDirty" }
 }
 
 M.treesitter =
 {
-    TSFloat = M.preferred.Type
+    ['@text'] = { fg = colors.white }
 }
 
 M.lsp =
 {
-    LspDiagnosticsDefaultError = { fg = "red" }
+    DiagnosticError = { fg = colors.red },
+    DiagnosticWarn = { fg = colors.pink },
+    DiagnosticInfo = { fg = colors.cyan },
+    DiagnosticHint = { fg = colors.orange },
+
+    DiagnosticUnderlineError = { underline = true, sp = colors.red, cterm = { underline = true } },
+    DiagnosticUnderlineWarn = { underline = true, sp = colors.pink, cterm = { underline = true } },
+    DiagnosticUnderlineInfo = { underline = true, sp = colors.cyan, cterm = { underline = true } },
+    DiagnosticUnderlinHint = { underline = true, sp = colors.orange, cterm = { underline = true } },
+}
+
+M.nvim_tree =
+{
+    NvimTreeFolderIcon = { fg = colors.pink },
+    NvimTreeRootFolder = { fg = colors.cyan },
+    NvimTreeExecFile = { bold = true, fg = colors.purple },
+    NvimTreeSpecialFile = { bold = true, underline = true, fg = colors.green },
+    NvimTreeImageFile = { fg = colors.pink },
+    NvimTreeOpenedFile = { bold = true, fg = colors.purple },
+    NvimTreeWindowPicker = { bold = true,  fg = colors.white, bg = "#4493c8" },
+    NvimTreeLiveFilterPrefix = { bold = true, fg = colors.cyan },
+    NvimTreeLiveFilterValue = { bold = true },
+    NvimTreeBookmark = { fg = colors.purple },
+    NvimTreeIndentMarker = { fg = colors.grey },
+    NvimTreeSymlink = { bold = true, fg = "#3ddbd9" },
+    NvimTreeNormal = { fg = colors.white, bg = "#161616" },
+    NvimTreeFolderName = { fg = "#78a9ff" },
+    NvimTreeEmptyFolderName = { fg = colors.cyan },
+    NvimTreeOpenedFolderName = { fg = colors.cyan },
+    NvimTreeWinSeparator = { fg = "#161616", bg = "#161616" },
+    NvimTreeFileIcon = { }
 }
 
 function M.setup()
@@ -128,7 +180,7 @@ function M.setup()
     vim.o.termguicolors = true
     vim.g.colors_name = "candy-floss"
 
-    local categories = { M.preferred, M.minor, M.groups, M.link_groups, M.treesitter, M.lsp }
+    local categories = { M.preferred, M.minor, M.groups, M.treesitter, M.lsp, M.nvim_tree, M.link_groups }
 
     for _, category in ipairs(categories)
     do
