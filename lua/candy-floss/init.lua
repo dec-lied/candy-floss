@@ -40,7 +40,8 @@ M.minor =
     Function = { fg = colors.pink },
     Struct = { fg = colors.pink },
     Method = { fg = colors.pink },
-    MatchParen = { bg = colors.grey, underline = true, cterm = { underline = true } }
+    MatchParen = { bg = colors.grey, underline = true, cterm = { underline = true } },
+    StorageClass = { fg = colors.blue },
 }
 
 M.groups =
@@ -132,13 +133,14 @@ M.link_groups =
 
 M.treesitter =
 {
-    ['@text'] = { fg = colors.white }
+    ['@text'] = { fg = colors.white },
+    ['@text.math'] = { fg = colors.purple }
 }
 
 M.lsp =
 {
     DiagnosticError = { fg = colors.red },
-    DiagnosticWarn = { fg = colors.pink },
+    DiagnosticWarn = { fg = colors.blue },
     DiagnosticInfo = { fg = colors.cyan },
     DiagnosticHint = { fg = colors.orange },
 
