@@ -56,7 +56,7 @@ M.groups =
     DiffChange =    { fg = colors.orange },
     DiffDelete =    { fg = colors.pink },
     DiffText =      { fg = colors.blue },
-    EndOfBuffer =   { fg = colors.light_grey, bg = colors.black},
+    EndOfBuffer =   { fg = colors.dark_grey, bg = colors.black},
     TermCursor =    { fg = colors.black, bg = colors.white },
     TermCursorNC =  { fg = colors.black, bg = colors.white },
     ErrorMsg =      { fg = colors.light_pink },
