@@ -42,6 +42,7 @@ M.minor =
     Method = { fg = colors.pink },
     MatchParen = { bg = colors.grey, underline = true, cterm = { underline = true } },
     StorageClass = { fg = colors.blue },
+    Operator = { fg = colors.white }
 }
 
 M.groups =
@@ -135,7 +136,9 @@ M.treesitter =
 {
     ['@text'] = { fg = colors.white },
     ['@text.math'] = { fg = colors.purple },
-    ['@parameter'] = { fg = colors.white }
+    ['@parameter'] = { fg = colors.white },
+    ['@variable'] = { fg = colors.white },
+    ['@field'] = { fg = colors.blue },
 }
 
 M.lsp =
