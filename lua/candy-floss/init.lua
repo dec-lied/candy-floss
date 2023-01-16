@@ -199,7 +199,7 @@ function M.setup()
     vim.o.termguicolors = true
     vim.g.colors_name = "candy-floss"
 
-    local categories = { M.preferred, M.minor, M.groups, M.treesitter, M.lsp, M.nvim_tree, M.barbar, M.link_groups }
+    local categories = { M.preferred, M.minor, M.groups, M.treesitter, M.lsp, M.nvim_tree, M.link_groups }
 
     for _, category in ipairs(categories)
     do
@@ -207,6 +207,13 @@ function M.setup()
         do
             vim.api.nvim_set_hl(0, group, settings)
         end
+    end
+end
+
+function M.setup_barbar()
+    for group, settings in pairs(M.barbar)
+    do
+        vim.api.nvim_set_hl(0, group, settings)
     end
 end
 
