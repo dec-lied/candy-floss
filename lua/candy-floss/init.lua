@@ -176,19 +176,6 @@ M.nvim_tree =
     NvimTreeFileIcon = { }
 }
 
-M.barbar =
-{
-    BufferDefaultCurrentMod     = { fg = colors.pink, bg = colors.black },
-    BufferDefaultCurrentWARM    = { fg = colors.red, bg = colors.black },
-    BufferDefaultInactive       = { fg = colors.blue, bg = colors.black },
-    BufferDefaultInactiveIndex  = { fg = colors.blue, bg = colors.black },
-    BufferDefaultInactiveMod    = { fg = colors.other_blue, bg = colors.black },
-    BufferDefaultInactiveSign   = { fg = colors.cyan, bg = colors.black },
-    BufferDefaultInactiveWARN   = { fg = colors.cyan, bg = colors.black },
-    BufferDefaultVisibleMod     = { fg = colors.purple, bg = colors.black },
-    BufferDefaultVisibleWARN    = { fg = colors.orange, bg = colors.black }
-}
-
 function M.setup()
     if vim.fn.exists("syntax_on")
     then
@@ -207,13 +194,6 @@ function M.setup()
         do
             vim.api.nvim_set_hl(0, group, settings)
         end
-    end
-end
-
-function M.setup_barbar()
-    for group, settings in pairs(M.barbar)
-    do
-        vim.api.nvim_set_hl(0, group, settings)
     end
 end
 
